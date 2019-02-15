@@ -51,6 +51,15 @@ ctx.body = ctx.serialize('api.search', searchResult, { foo: 'bar' });
 
 ### Serializers
 
+### Easy way, exports fields
+
+```js
+module.exports = [
+  'name',
+  'age',
+];
+```
+
 #### Simple way, only provider fields
 
 ```js

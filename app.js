@@ -14,8 +14,18 @@ module.exports = class {
     const serializerDir = path.join(app.baseDir, 'app/serializer');
     const items = await readSerializers(serializerDir);
     for (const item of items) {
-      const Serializer = require(item.fullpath)(app);
-      app.serializer[item.type] = new Serializer();
+      const mod = require(item.fullpath);
+      let serializer;
+      if (Array.isArray(mod)) {
+        // module.exports = [ ... ];
+        const fields = mod;
+        serializer = new app.Serializer();
+        serializer.fields = fields;
+      } else {
+        const Serializer = mod(app);
+        serializer = new Serializer();
+      }
+      app.serializer[item.type] = serializer;
       app.coreLogger.info('[egg-serializer] add %j serializer from %j', item.type, item.fullpath);
     }
   }
