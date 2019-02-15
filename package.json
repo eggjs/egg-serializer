@@ -10,7 +10,9 @@
     "eggPlugin",
     "egg-plugin"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "mz": "^2.7.0"
+  },
   "devDependencies": {
     "autod": "^3.0.0",
     "autod-egg": "^1.0.0",
@@ -35,12 +37,13 @@
     "autod": "autod"
   },
   "files": [
-    "app.js",
-    "agent.js",
-    "config"
+    "app",
+    "lib",
+    "config",
+    "app.js"
   ],
   "ci": {
-    "version": "8, 9"
+    "version": "8, 10, 11"
   },
   "repository": {
     "type": "git",

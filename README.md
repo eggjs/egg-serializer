@@ -20,9 +20,7 @@
 [download-image]: https://img.shields.io/npm/dm/egg-serializer.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-serializer
 
-<!--
-Description here.
--->
+serializer any data to response
 
 ## Install
 
@@ -40,19 +38,79 @@ exports.serializer = {
 };
 ```
 
+## Example
+
+### `ctx.serialize` in Controller
+
+```js
+ctx.body = ctx.serialize('api.user', user);
+
+// with options
+ctx.body = ctx.serialize('api.search', searchResult, { foo: 'bar' });
+```
+
+### Serializers
+
+#### Simple way, only provider fields
+
+```js
+// {app_root}/app/serializer/user.js
+module.exports = app => {
+  return class extends app.Serializer {
+    get fields() {
+      return [
+        'name',
+        'age',
+        // ... and so on
+      ];
+    }
+  }
+};
+```
+
+#### Custom way, override format method
+
+```js
+// {app_root}/app/serializer/api/search.js
+module.exports = app => {
+  return class extends app.Serializer {
+    constructor() {
+      super();
+      this.fields = [
+        'count',
+        'time',
+        // ... and so on
+      ];
+    }
+
+    format(obj, options) {
+      const data = this.pick(obj);
+
+      data.book = app.serialize('api.book', obj.book);
+      data.user = app.serialize('api.user', obj.user);
+      data.last_editor = app.serialize('api.user', obj.last_editor);
+      data.server_time = Date.now();
+      if (options.foo === 'bar') {
+        data.foo = 'bar';
+      }
+
+      return data;
+    },
+  }
+};
+```
+
 ## Configuration
 
 ```js
 // {app_root}/config/config.default.js
 exports.serializer = {
+  // show `_serializer` property on data
+  showSerializerType: false,
 };
 ```
 
 see [config/config.default.js](config/config.default.js) for more detail.
-
-## Example
-
-<!-- example here -->
 
 ## Questions & Suggestions
 
