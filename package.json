@@ -1,6 +1,6 @@
 {
   "name": "egg-serializer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "serializer any data to response",
   "eggPlugin": {
     "name": "serializer"
