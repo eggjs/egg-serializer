@@ -23,6 +23,9 @@ module.exports = app => {
       if (options.foo === 'bar') {
         data.foo = 'bar';
       }
+      if (options.ctx) {
+        data.method = options.ctx.method;
+      }
 
       return data;
     }

@@ -79,6 +79,7 @@ describe('test/serializer.test.js', () => {
         user: { name: 'ok', age: 18 },
         last_editor: { name: 'mike' },
         server_time: 1550216827100,
+        method: 'GET',
       })
       .expect(200);
   });
