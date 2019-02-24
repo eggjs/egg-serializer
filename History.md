@@ -1,4 +1,13 @@
 
+1.1.0 / 2019-02-25
+==================
+
+**features**
+  * [[`c2900c9`](http://github.com/eggjs/egg-serializer/commit/c2900c986075b867c89b760b10129c87509e6e29)] - feat: auto add ctx to options (#1) (fengmk2 <<fengmk2@gmail.com>>)
+
+**others**
+  * [[`232af77`](http://github.com/eggjs/egg-serializer/commit/232af778f5458e9e42cd2efddfdeaf14964129e9)] - deps: update devDependencies (fengmk2 <<fengmk2@gmail.com>>)
+
 1.0.1 / 2019-02-15
 ==================
 
