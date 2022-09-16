@@ -65,6 +65,9 @@ describe('test/serializer.test.js', () => {
           name: 'fengmk3',
           age: 3,
         },
+        {
+          age: 50,
+        },
       ])
       .expect(200);
   });

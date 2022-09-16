@@ -67,6 +67,11 @@ module.exports = class extends Controller {
         title: 'java',
       },
       null,
+      {
+        set name(value) { console.log(value); },
+        get age() { return 50; },
+        title: 'ocaml',
+      },
     ];
     ctx.body = ctx.serialize('user', users);
   }
